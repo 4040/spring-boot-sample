@@ -21,11 +21,7 @@ stage('Build') {
 	 }
 }
 	
-	  stage("Docker version") {
-            withDockerRegistry() {
-            sh "docker version" 
-            }
-            }
+	
 
 
 stage("Docker build") {
