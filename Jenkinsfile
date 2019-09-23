@@ -20,7 +20,10 @@ node {
  
      stage ('Docker') 
      { 
-            sh 'docker version' 
+	      withDockerRegistry([credentialsId: 'acr_cred', url: 
+						'https://smcpacr.azurecr.io']) {
+            sh 'docker version'
+		        }
      } 
      
         stage("Docker build") {
@@ -28,7 +31,7 @@ node {
           withDockerRegistry([credentialsId: 'acr_cred', url: 
 						'https://smcpacr.azurecr.io']) {
 							sh "docker build --no-cache -f dockerfile  ." 
-	  }
+	
        
     }
         stage("Docker push") {
