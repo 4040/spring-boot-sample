@@ -27,7 +27,7 @@ stage('Build') {
 stage("Docker build") {
     withDockerRegistry([credentialsId: 'acr_cred', url: 
     'https://smcpacr.azurecr.io']) {
-    sh "docker build --no-cache -f dockerfile ." 
+    sh "docker build --no-cache -f -v /var/run/docker.sock:/var/run/docker.sock dockerfile ." 
     }
 }
 
