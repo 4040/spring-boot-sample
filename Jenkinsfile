@@ -18,13 +18,7 @@ node {
             env.version = pom.version
         }
  
-     stage ('Docker') 
-     { 
-	      withDockerRegistry([credentialsId: 'acr_cred', url: 
-						'https://smcpacr.azurecr.io']) {
-            sh 'docker version'
-		        }
-     } 
+   
      
         stage("Docker build") {
         
