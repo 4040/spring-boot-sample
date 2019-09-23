@@ -20,6 +20,13 @@ stage('Build') {
 	env.version = pom.version
 	 }
 }
+	
+	  stage("Docker version") {
+            withDockerRegistry() {
+            sh "docker version" 
+            }
+            }
+
 
 stage("Docker build") {
     withDockerRegistry([credentialsId: 'acr_cred', url: 
