@@ -10,11 +10,15 @@ stage('Initialize')   {
 	env.PATH = "${dockerHome}/bin:${env.PATH}"
 }
 
+	           
+
 stage('Build') {
+	 withMaven(maven:'maven') {
 	sh 'mvn clean install'
 	def pom = readMavenPom file:'pom.xml'
 	print pom.version
 	env.version = pom.version
+	 }
 }
 
 stage("Docker build") {
