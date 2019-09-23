@@ -1,6 +1,6 @@
 node {
 
-withMaven(maven:'maven') {
+
 stage('Checkout') {
 	git url: 'https://github.com/4040/spring-boot-sample.git', credentialsId: 'github-4040', branch: 'master'
 }
@@ -24,6 +24,6 @@ stage("Docker build") {
     }
 }
 
-}
+
 
 }
